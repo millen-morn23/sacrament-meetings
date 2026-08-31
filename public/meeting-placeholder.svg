@@ -1,0 +1,19 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 800 500"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Sacrament meeting program</title>
+  <desc id="desc">
+    An illustration representing an organized sacrament meeting program.
+  </desc>
+  <rect width="800" height="500" fill="#e2e8f0"/>
+  <rect x="190" y="60" width="420" height="380" rx="18" fill="#ffffff"/>
+  <rect x="245" y="110" width="310" height="28" rx="8" fill="#0f172a"/>
+  <rect x="245" y="170" width="250" height="14" rx="7" fill="#94a3b8"/>
+  <rect x="245" y="205" width="280" height="14" rx="7" fill="#cbd5e1"/>
+  <rect x="245" y="260" width="180" height="14" rx="7" fill="#94a3b8"/>
+  <rect x="245" y="295" width="230" height="14" rx="7" fill="#cbd5e1"/>
+  <rect x="245" y="350" width="210" height="14" rx="7" fill="#94a3b8"/>
+</svg>
