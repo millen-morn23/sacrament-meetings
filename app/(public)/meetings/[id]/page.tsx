@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import MeetingDetail from "../../../components/MeetingDetail";
-import PrintButton from "../../../components/PrintButton";
-import { getMeetingById } from "../../../lib/meetings-db";
+import MeetingDetail from "@/components/MeetingDetail";
+import PrintButton from "@/components/PrintButton";
+import { getMeetingById } from "@/lib/meetings-db";
 
 interface MeetingPageProps {
   params: Promise<{
@@ -10,7 +10,9 @@ interface MeetingPageProps {
   }>;
 }
 
-export default async function MeetingPage({ params }: MeetingPageProps) {
+export default async function MeetingPage({
+  params,
+}: MeetingPageProps) {
   const { id } = await params;
   const meetingId = Number(id);
 
@@ -18,7 +20,7 @@ export default async function MeetingPage({ params }: MeetingPageProps) {
     notFound();
   }
 
-  const meeting = getMeetingById(meetingId);
+  const meeting = await getMeetingById(meetingId);
 
   if (!meeting) {
     notFound();
