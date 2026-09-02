@@ -34,17 +34,26 @@ export default async function MeetingsPage({
 
   return (
     <section aria-labelledby="meetings-heading">
-      <div className="mb-6">
-        <h2
-          id="meetings-heading"
-          className="text-3xl font-bold text-slate-900"
-        >
-          All Meetings
-        </h2>
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2
+            id="meetings-heading"
+            className="text-3xl font-bold text-slate-900"
+          >
+            All Meetings
+          </h2>
 
-        <p className="mt-2 text-slate-600">
-          Browse current and past sacrament meeting programs.
-        </p>
+          <p className="mt-2 text-slate-600">
+            Browse current and past sacrament meeting programs.
+          </p>
+        </div>
+
+        <Link
+          href="/meetings/new"
+          className="rounded-lg bg-slate-900 px-5 py-3 text-center text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+        >
+          Create Meeting
+        </Link>
       </div>
 
       <form
@@ -71,7 +80,7 @@ export default async function MeetingsPage({
 
           <button
             type="submit"
-            className="rounded-lg bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-700"
+            className="rounded-lg bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
           >
             Search
           </button>
@@ -81,7 +90,10 @@ export default async function MeetingsPage({
       {meetings.length > 0 ? (
         <div className="grid gap-5">
           {meetings.map((meeting) => (
-            <MeetingCard key={meeting.id} meeting={meeting} />
+            <MeetingCard
+              key={meeting.id}
+              meeting={meeting}
+            />
           ))}
         </div>
       ) : (
@@ -101,7 +113,7 @@ export default async function MeetingsPage({
                 ...(query ? { query } : {}),
                 page: String(safeCurrentPage - 1),
               }).toString()}`}
-              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
             >
               Previous
             </Link>
@@ -121,7 +133,7 @@ export default async function MeetingsPage({
                 ...(query ? { query } : {}),
                 page: String(safeCurrentPage + 1),
               }).toString()}`}
-              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
             >
               Next
             </Link>

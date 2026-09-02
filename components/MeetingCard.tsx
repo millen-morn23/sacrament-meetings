@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { deleteMeeting } from "@/lib/actions";
 import type { SacramentMeeting } from "../lib/types";
 
 interface MeetingCardProps {
@@ -35,12 +36,36 @@ export default function MeetingCard({ meeting }: MeetingCardProps) {
           </p>
         </div>
 
-        <Link
-          href={`/meetings/${meeting.id}`}
-          className="rounded-md bg-slate-900 px-4 py-2 text-center text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
-        >
-          View Program
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href={`/meetings/${meeting.id}`}
+            className="rounded-md bg-slate-900 px-4 py-2 text-center text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+          >
+            View Program
+          </Link>
+
+          <Link
+            href={`/meetings/${meeting.id}/edit`}
+            className="rounded-md border border-slate-300 px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+          >
+            Edit
+          </Link>
+
+          <form action={deleteMeeting}>
+            <input
+              type="hidden"
+              name="id"
+              value={meeting.id}
+            />
+
+            <button
+              type="submit"
+              className="rounded-md border border-red-300 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            >
+              Delete
+            </button>
+          </form>
+        </div>
       </div>
     </article>
   );
