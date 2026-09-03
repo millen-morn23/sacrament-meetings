@@ -11,8 +11,34 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Sacrament Meeting Planner",
-  description: "Plan and review sacrament meeting programs.",
+  metadataBase: new URL("http://localhost:3000"),
+  title: {
+    default: "Sacrament Meeting Planner",
+    template: "%s | Sacrament Meeting Planner",
+  },
+  description:
+    "Plan and review sacrament meeting programs for the Nairobi Ward.",
+  openGraph: {
+    title: "Sacrament Meeting Planner",
+    description:
+      "Plan and review sacrament meeting programs for the Nairobi Ward.",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sacrament Meeting Planner",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sacrament Meeting Planner",
+    description:
+      "Plan and review sacrament meeting programs for the Nairobi Ward.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({

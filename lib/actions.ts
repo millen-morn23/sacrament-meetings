@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { auth } from "@/auth";
 import {
   createMeeting as createMeetingDb,
   updateMeeting as updateMeetingDb,
@@ -131,6 +132,12 @@ export async function createMeeting(
   prevState: State,
   formData: FormData,
 ): Promise<State> {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
+
   const validatedFields = MeetingFormSchema.safeParse(
     formDataToMeetingData(formData),
   );
@@ -166,6 +173,12 @@ export async function updateMeeting(
   prevState: State,
   formData: FormData,
 ): Promise<State> {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
+
   const validatedFields = MeetingFormSchema.safeParse(
     formDataToMeetingData(formData),
   );
@@ -203,6 +216,12 @@ export async function updateMeeting(
 export async function deleteMeeting(
   formData: FormData,
 ): Promise<void> {
+  const session = await auth();
+
+  if (!session?.user) {
+    redirect("/login");
+  }
+
   const id = Number(formData.get("id"));
 
   if (!Number.isInteger(id) || id <= 0) {

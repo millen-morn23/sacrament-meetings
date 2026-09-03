@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import MeetingCard from "@/components/MeetingCard";
 import {
   getMeetingsBySearch,
   getMeetingsTotalPages,
 } from "@/lib/meetings-db";
+
+export const metadata: Metadata = {
+  title: "Meetings",
+  description:
+    "Browse, search, and manage sacrament meeting programs for the Nairobi Ward.",
+};
 
 interface MeetingsPageProps {
   searchParams: Promise<{
