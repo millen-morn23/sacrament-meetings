@@ -11,7 +11,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL(
+    "https://sacrament-meetings-al9iui96f-lil-mills-projects.vercel.app",
+  ),
   title: {
     default: "Sacrament Meeting Planner",
     template: "%s | Sacrament Meeting Planner",
